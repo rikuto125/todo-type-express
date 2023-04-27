@@ -75,6 +75,8 @@ exports.down = function(knex) {
 };
 ```
 
+
+
 *実行(1)か実行(2)のどちらかで行う
 - 6. migrationを実行(1)
 ```bash
