@@ -23,7 +23,7 @@ npm install knex -g
 
 - 2. knex.jsを初期化
 ```bash
-  knex init or touch knexfile.js
+  npx knex init or touch knexfile.js
 ```
 
 - 3. knex.jsの設定を変更
@@ -53,7 +53,7 @@ module.exports = {
 - 4. migrationファイルを作成
 ```bash
     mkdir migrations
-    knex migrate:make create_users_table
+    npx knex migrate:make create_users_table
 ```
 
 - 5. migrationファイルを編集
@@ -80,7 +80,7 @@ exports.down = function(knex) {
 *実行(1)か実行(2)のどちらかで行う
 - 6. migrationを実行(1)
 ```bash
-knex migrate:latest
+npx knex migrate:latest
 ```
 
 - 7. migrationを実行(2) index.tsでmigrationを実行する
