@@ -1,0 +1,27 @@
+services:
+  app:
+    container_name: todo-app
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+      - "30000:3000"
+    volumes:
+      - ".:/app"
+      - "/app/node_modules"
+    depends_on:
+      - db
+
+  db:
+    container_name: todo-db
+    image: 'mysql:8.0'
+    ports:
+      - '33065:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - './tmp/mysql:/var/lib/mysql'
