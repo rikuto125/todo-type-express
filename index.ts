@@ -1,12 +1,24 @@
-import express, { Request, Response } from "express";
+import express from 'express'
+import router from './infrastructure/router'
+import bodyParser from 'body-parser'
+import cors from 'cors'
 
-const app = express();
-const port = 3000;
+const app = express()
 
-app.get("/", (req: Request, res: Response) => {
-    res.send("Hello World!");
-});
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-});
+const allowedOrigins = "*"
+
+const options: cors.CorsOptions = {
+    origin: allowedOrigins
+}
+app.use(cors(options))
+
+app.use('/api', router)
+
+app.listen(3000, () => {
+    console.log('listening on port 3000')
+})
+
+export default app

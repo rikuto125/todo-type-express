@@ -10,9 +10,9 @@ services:
       - ".:/app"
       - "/app/node_modules"
     depends_on:
-      - db
+      - todo-db
 
-  db:
+  todo-db:
     container_name: todo-db
     image: 'mysql:8.0'
     ports:
