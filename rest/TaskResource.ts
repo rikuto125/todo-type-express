@@ -23,6 +23,7 @@ export class TaskResource {
 
     async createTask(req: any, res: any) {
         const { content } = req.body
+        console.log('content', content)
         const result = await this.taskUseCase.create(content)
         return result
     }

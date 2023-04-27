@@ -2,6 +2,8 @@ import express from 'express'
 import router from './infrastructure/router'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import db from "./config/db";
+
 
 const app = express()
 
@@ -16,6 +18,14 @@ const options: cors.CorsOptions = {
 app.use(cors(options))
 
 app.use('/api', router)
+
+db.migrate.latest().then(() => {
+    console.log('Migrations run successfully')
+}
+).catch((err: any) => {
+    console.log(err)
+}
+)
 
 app.listen(3000, () => {
     console.log('listening on port 3000')

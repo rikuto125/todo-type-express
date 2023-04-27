@@ -1,4 +1,4 @@
-import mysql from 'mysql'
+import mysql from 'mysql2'
 import dotenv from 'dotenv'
 import util from 'util'
 import { IDBConnection } from './IDBConnection'
@@ -16,7 +16,7 @@ export class MysqlConnection extends IDBConnection {
             user: process.env.DB_USER_DEV,
             password: process.env.DB_PASSWORD_DEV,
             database: process.env.DB_NAME_DEV,
-            timezone: 'Asia/Tokyo'
+            timezone: 'utc',
         })
 
         this.pool.getConnection((error: any, connection: any) => {
